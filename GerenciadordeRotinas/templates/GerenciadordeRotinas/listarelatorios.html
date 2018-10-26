@@ -1,0 +1,68 @@
+{% extends 'GerenciadordeRotinas/base.html' %}
+
+
+{% block title %}Cadastro /Alteração Relatório{% endblock title %}
+{% block content %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/ListaRelatorios">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Lista de Relatórios</font>
+            </font>
+        </a>
+    </li>
+</ol>
+
+
+
+<div class="">
+    <h2>Lista de Relatórios</h2>
+    <a href={% url 'post'%} class="btn btn-primary btn-sm" role="button" aria-pressed="true">Cadastrar Novo</a>
+</div>
+
+
+<div class="container">
+    <form class="form-inline my-2 my-lg-0"></form>
+    {% if relatorios_list %}
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col">Modificado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for relatorio in relatorios_list %}
+                <tr>
+                    <td><a href={% url 'edit' relatorio.id %}>{{relatorio.nome_relatorio}}</a></td>
+                    
+                    <td>
+                        {% if relatorio.ativo == 1 %}
+                        Sim
+                        {% else %}
+                        Não
+                        {% endif %}
+                    </td>
+                    <td>{{relatorio.modificao_em}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Não Encotramos nada aqui.Desculpe!</p>
+        {% endif %}
+    </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+
+
+
+    {% endblock content %}
+
+
+
+

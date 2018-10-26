@@ -1,0 +1,15 @@
+{% extends 'GerenciadordeRotinas/base.html' %}
+
+
+{% block title %}Cadastro /Alteração Relatório{% endblock title %}
+
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+{% endblock content %}

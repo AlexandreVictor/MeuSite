@@ -1,0 +1,72 @@
+{% extends 'GerenciadordeRotinas/base.html' %}
+
+
+{% block title %}Alteração{% endblock title %}
+
+{% block content %}
+{% if fields_list%}
+<div class="container">
+    <h2>Editar Relatório</h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {% for relatorio in fields_list %}
+        <div class="form-group row">
+            <label for="InputId" class="col-sm-2 col-form-label">Id:</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control  form-control-sm" id="id" aria-describedby="id" value="{{ relatorio.id}}" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="InputNome" class="col-sm-2 col-form-label">Nome:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control form-control-sm" id="nome" aria-describedby="nome" value="{{ relatorio.nome_relatorio}}">
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2">Status:</legend>
+                <div class="col-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="ativo" checked>
+                        <label class="form-check-label" for="RdAtivo">
+                            Ativo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="inativo">
+                        <label class="form-check-label" for="RdInativo">
+                            Inativo
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary">Cancelar</button>
+    </form>
+    
+    
+</div>
+
+
+{{ relatorio.modificao_em}}
+
+
+{% else %}
+<div class="">
+    <h2>Cadastrar Relatório</h2>
+</div>
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input class="btn btn-success" type="submit">Salvar</input>
+    <button type="button" class="btn btn-cancel">Cancelar</button>
+</form>
+{% endif %}
+
+
+{% endblock content %}
+
