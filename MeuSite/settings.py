@@ -86,9 +86,9 @@ DATABASES = {
     'default': {
         'NAME': 'waControlesAutomatizadosCGE',
         'ENGINE': 'sql_server.pyodbc',
-        'HOST': '192.168.118.137',
-        'USER': 'alexandre',
-        'PASSWORD': 'Balao#14',
+        'HOST': '',
+        'USER': '',
+        'PASSWORD': '',
     }
 }
 
